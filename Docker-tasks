@@ -1,0 +1,8 @@
+
+#
+
+Create a container by running nginx:1.21.3 image in detach mode
+Start a container using the image mentioned above. Name the container webserver and set the environment variable APP=nginx. Run the container in detached mode.
+----------->docker run -d --name webserver -e APP=nginx nginx:1.21.3
+Remove the above container and start another one using above configurations and by binding container port, 80 with the host’s 80 port. Visit this URL to verify port binding
+------->docker run -d --name=webserver --env APP=nginx -p 80:80 nginx:1.21.3
