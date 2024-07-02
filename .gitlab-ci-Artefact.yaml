@@ -3,6 +3,7 @@ stages:   # Dictionary
  - test    # this is test stage
  - integration # this is an integration stage
  - prod       # this is prod/production stage
+ - someScan
 
 build:       # this is job named build, it can be anything, job1, job2, etc.,
   stage: build    # this job belongs to the build stage. Here both job name and stage name is the same i.e., build
@@ -30,3 +31,9 @@ prod:
   stage: prod
   script:
     - echo "This is a deploy step."
+someScan:
+  script: ./security-tool.sh    # <-- this tool generates vulnerabilities.json as output
+  artifacts:                    # <--- To save results, we use artifacts tag
+    paths:                      # <--- We then give the path/paths of the scan result files we want to store for further processing
+    - vulnerabilities.json                  #<--- The filename
+    expire_in: 1 week       # <--- To save disk space, we want to store only for 1 week
