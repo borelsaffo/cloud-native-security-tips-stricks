@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  web:
+    image: nginx
+    container_name: webserver       # name of container
+    ports:
+     - "80:80"                      # similar to docker run -p 80:80
+    environment:
+     - NGINX_HOST=example.com       # similar to docker run -e VAR=value
+    volumes:
+     - ./:/var/www/html/app             # ./ means a bind mounts
+     - image_data:/var/www/html/images  # image_data means use docker volume
+
+volumes:
+  image_data:                       # similar to docker volume create
+
+
+
+
+cat >docker-compose.yml<<EOF
+version: "3"
+
+services:
+  ubuntu:
+    image: ubuntu:20.04
+    container_name: ubuntu1
+    stdin_open: true        # the same way like docker run -i
+EOF
+
+docker-compose up -d
+docker ps
+docker-compose down
