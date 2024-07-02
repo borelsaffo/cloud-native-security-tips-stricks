@@ -7,3 +7,39 @@ Create a file using the echo "this is an output" > output.txt command in the int
 Include an artifact with when: always for every executed integration job, and trigger a failure in the integration job using exit 1, 
 Allow the integration job to fail,  yet move on to the next stage,  
 In the deploy job, add a term for giving a person’s approval (via a button such as a play button) in order to execute the job
+
+
+stages:
+  - build
+  - test
+  - integration
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Running Build stage"
+
+test:
+  stage: test
+  script:
+    - echo "Running Test stage"
+
+integration:
+  stage: integration
+  script:
+    - echo "Running Integration stage"
+    - echo "this is an output" > output.txt
+    - exit 1  # Trigger failure
+  artifacts:
+    paths:
+      - output.txt
+    when: always
+  allow_failure: true
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Running Deploy stage"
+  when: manual
+  allow_failure: false
