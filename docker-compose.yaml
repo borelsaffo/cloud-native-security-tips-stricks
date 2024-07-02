@@ -53,3 +53,20 @@ services:
 volumes:
   data:
 EOF
+
+
+###
+cat > /opt/docker-compose.yml<<EOF
+version: "3"
+services:
+  webserver:
+    image: nginx
+    container_name: webserver
+    ports:
+     - 8080:80
+    volumes:
+     - data:/usr/share/nginx/html
+
+volumes:
+  data:
+EOF
