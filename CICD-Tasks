@@ -1,0 +1,9 @@
+# CICD Task
+
+
+
+Create four stages, namely build, test, integration, and deploy,
+Create a file using the echo "this is an output" > output.txt command in the integration stage and upload output.txt using the artifacts keyword,
+Include an artifact with when: always for every executed integration job, and trigger a failure in the integration job using exit 1, 
+Allow the integration job to fail,  yet move on to the next stage,  
+In the deploy job, add a term for giving a person’s approval (via a button such as a play button) in order to execute the job
