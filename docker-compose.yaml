@@ -16,7 +16,7 @@ volumes:
   image_data:                       # similar to docker volume create
 
 
-
+##
 
 cat >docker-compose.yml<<EOF
 version: "3"
@@ -31,3 +31,25 @@ EOF
 docker-compose up -d
 docker ps
 docker-compose down
+
+
+##
+cat >~/docker-compose.yml<<EOF
+version: "3"
+
+services:
+  ubuntu:
+    image: ubuntu:20.04
+    container_name: myubuntu
+    volumes:
+     - data:/opt
+
+  alpine:
+    image: alpine:3.13
+    container_name: myalpine
+    volumes:
+     - data:/tmp
+
+volumes:
+  data:
+EOF
