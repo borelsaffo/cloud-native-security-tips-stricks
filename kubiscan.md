@@ -2,14 +2,23 @@
 KubiScan is a tool for scanning Kubernetes cluster for risky permissions in Kubernetes’s Role-based access control (RBAC) authorization model.
 
 First, download the KubiScan package using the wget command:
+
 wget https://github.com/cyberark/KubiScan/archive/refs/tags/v1.6.zip
+
 apt update && apt install unzip -y
+
 unzip v1.6.zip
+
 cd KubiScan-1.6
+
 pip3 install -r requirements.txt
+
 alias kubiscan='python3 ~/KubiScan-1.6/KubiScan.py'
+
 kubiscan -h
+
 kubiscan -a
+
 ![image](https://github.com/borelsaffo/cloud-native-security-tips-stricks/assets/27947973/4a5fb55c-add9-458d-b4f4-45f78938bcec)
 
 ![image](https://github.com/borelsaffo/cloud-native-security-tips-stricks/assets/27947973/91fd1224-3576-4721-8504-3b42c989c997)
