@@ -159,3 +159,24 @@ Using kube config file.
 | CRITICAL | dashboard-metrics-scraper-5657497c4c-nwvll | kubernetes-dashboard | dashboard-metrics-scraper | kubernetes-dashboard    | kubernetes-dashboard |
 | CRITICAL | kubernetes-dashboard-78f87ddfc-4hx7g       | kubernetes-dashboard | kubernetes-dashboard      | kubernetes-dashboard    | kubernetes-dashboard |
 +----------+--------------------------------------------+----------------------+---------------------------+-------------------------+----------------------+
+
+kubectl apply -f https://gitlab.practical-devsecops.training/-/snippets/17/raw/main/gitlab-rbac.yaml
+
+kubiscan -rr
+
+![image](https://github.com/borelsaffo/cloud-native-security-tips-stricks/assets/27947973/05aaba29-7e91-4e03-a7e3-6eb0b02c53a0)
+
+kubiscan -rr -ns default
+
+![image](https://github.com/borelsaffo/cloud-native-security-tips-stricks/assets/27947973/813f261c-2b9a-45db-afab-d8e15ccbbe7f)
+
+
+KubiScan is a comprehensive open-source tool for scanning Kubernetes clusters for potential security vulnerabilities.
+It offers a simple and effective way to identify critical risks to your Kubernetes environment, 
+helping to ensure that your system is secure and in compliance with best security practices.
+
+By using KubiScan for security scans, developers can get immediate feedback on security issues in their Kubernetes environment,
+allowing them to quickly address security gaps and avoid the costly consequences of data breaches or downtime. KubiScan’s
+ease of use and powerful scanning capabilities make it a valuable addition to any organization’s DevSecOps toolchain.
+
+For more details on KubeScan visit https://github.com/cyberark/KubiScan
