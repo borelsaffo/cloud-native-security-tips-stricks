@@ -10,7 +10,9 @@ pip3 install -r requirements.txt
 alias kubiscan='python3 ~/KubiScan-1.6/KubiScan.py'
 kubiscan -h
 kubiscan -a
+![image](https://github.com/borelsaffo/cloud-native-security-tips-stricks/assets/27947973/4a5fb55c-add9-458d-b4f4-45f78938bcec)
 
+![image](https://github.com/borelsaffo/cloud-native-security-tips-stricks/assets/27947973/91fd1224-3576-4721-8504-3b42c989c997)
 
 /KubiScan-1.6# kubiscan -a
 
