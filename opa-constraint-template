@@ -1,0 +1,42 @@
+cat >> constraint-template.yaml <<EOL
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: enforcetrustedimages
+spec:
+  crd:
+    spec:
+      names:
+        kind: enforcetrustedimages
+      validation:
+        openAPIV3Schema:
+          type: object
+          properties:
+            images:
+              type: array
+              items:
+                type: string
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package enforcetrustedimages
+
+        trusted_images = {images |
+            images = input.parameters.images[_]
+        }
+
+        images_trusted(str, patterns) {
+            image_matches(str, patterns[_])
+        }
+
+        image_matches(str, pattern) {
+            contains(str, pattern)
+        }
+        violation[{"msg": msg}] {
+          input.review.object
+          image := input.review.object.spec.containers[_].image
+          name := input.review.object.metadata.name
+          not images_trusted(image, trusted_images)
+          msg := sprintf("pod %q has an image that is not trusted by your organization %q. Follow the trusted  images %v", [name, image, trusted_images])
+        }
+EOL
