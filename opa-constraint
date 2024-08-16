@@ -1,0 +1,19 @@
+cat >> constraint.yaml <<EOL
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: enforcetrustedimages
+metadata:
+  name: enforcetrustedimages
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    namespaces:
+      - prod
+  parameters:
+    images:
+      - hysnsec/safety
+      - busybox
+      - nginx:1.23
+      - myorganisation.example.com/myapp/newapp:latest
+EOL
